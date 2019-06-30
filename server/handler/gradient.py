@@ -112,7 +112,7 @@ class GradientHandler(BaseHandler):
         #梯度聚合聚合
         print("开始梯度聚合")
         # 获取梯度
-        for i in range(10):
+        for i in range(self.container_number):
             grad = self.listToNumpy(self.load_json("./result/grad" + str(i) + ".json"))
             grads.append(grad)
 
