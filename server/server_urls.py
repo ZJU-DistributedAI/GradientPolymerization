@@ -3,7 +3,7 @@
 urlpatterns = [
 
 
-    (r"/","server.handler.gradient.GradientHandler")
+    (r"/gradient","server.handler.gradient.GradientHandler")
 
 
 ]
