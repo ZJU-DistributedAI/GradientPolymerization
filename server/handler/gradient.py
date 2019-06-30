@@ -104,17 +104,17 @@ class GradientHandler(BaseHandler):
             return json.load(load_json)
 
     def put(self):
-        gradient = self.get_argument("gradient")
+        gradient1 = self.get_argument("gradient")
         res_sym = self.get_argument("iteration")
 
-        self.gradients.append(gradient)
+        self.gradients.append(gradient1)
         self.cyclic_barrier.wait()
 
         #梯度聚合聚合
         print("开始梯度聚合")
 
         # 加载上一轮迭代完的模型
-        primModel = self.listToNumpy(self.load_json("./polymerizeModel/resModel{}.json".format(iteration)))  # 路径还有问题
+        primModel = self.listToNumpy(self.load_json("./polymerizeModel/resModel{}.json".format(res_sym)))  # 路径还有问题
 
         aveGrad = self.getAveGrad(self.gradients)
         resModel = self.getResModel(primModel, aveGrad)
@@ -128,6 +128,6 @@ class GradientHandler(BaseHandler):
 
     def post(self):
         container_number = int(self.get_argument("containernumber"))
-        self.cyclic_barrier = self.CyclicBarrier(10)
+        self.cyclic_barrier = self.CyclicBarrier(container_number)
         self.response(data={}, status_code=200, msg="设置容器个数成功")
 
