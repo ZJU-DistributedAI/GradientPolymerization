@@ -105,6 +105,7 @@ class GradientHandler(BaseHandler):
 
     def put(self):
         gradient = self.get_argument("gradient")
+        res_sym = self.get_argument("iteration")
 
         self.gradients.append(gradient)
         self.cyclic_barrier.wait()
@@ -118,7 +119,7 @@ class GradientHandler(BaseHandler):
         aveGrad = self.getAveGrad(self.gradients)
         resModel = self.getResModel(primModel, aveGrad)
         # 每次梯度聚合后更新模型并保存
-        resPath = "./polymerizeModel/resModel" + str(iteration + 1) + ".json"  # 这里的iteration表示第几次聚合
+        resPath = "./polymerizeModel/resModel" + str(res_sym + 1) + ".json"  # 这里的iteration表示第几次聚合
         self.save_model(resPath, resModel)
 
         data = {}
