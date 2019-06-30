@@ -102,7 +102,7 @@ if __name__ == '__main__':
             'b3': (primModel['b3'] - model[4].b).tolist()}
 
 
-    #发送梯度到聚合方
+
     url = 'http://official-account/app/messages/group'
     headers = {"Content-Type": "application/json;charset=uf8"}
     body = {"type": "text", "content": grad,"iteration":iteration}

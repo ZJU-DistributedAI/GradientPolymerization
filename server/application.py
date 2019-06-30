@@ -1,7 +1,7 @@
 import sys
 import tornado
 from tornado.web import Application
-from server import urls
+import urls
 
 class Application(tornado.web.Application):
     def __init__(self):

@@ -13,7 +13,8 @@ RUN set -ex \
     && rm -rf /Python-3.5.0* \
     && yum install -y epel-release \
     && yum install -y python-pip
-COPY ../server /server
+COPY ./server /server
 WORKDIR /server
 RUN chmod -R 777 application.py
+RUN pip install -r requirements.txt
 CMD ["python", "application.py"]

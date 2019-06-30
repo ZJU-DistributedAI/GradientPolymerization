@@ -12,15 +12,14 @@ class BaseHandler(tornado.web.RequestHandler):
         self.set_header("Access-Control-Allow-Credentials", "true")
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
 
-    @gen.coroutine
-    def async_fetch(self, url, **kwargs):
-        http_client = httpclient.AsyncHTTPClient()
-        request = tornado.httpclient.HTTPRequest(url=url, connect_timeout=40.0, request_timeout=40.0, allow_nonstandard_methods=True,
-                                                 headers={'Content-Type': 'application/json'}, **kwargs)
-
-        res = yield gen.Task(http_client.fetch, request)
-        self.write_async_log(res)
-        return res
+    # @gen.coroutine
+    # def async_fetch(self, url, **kwargs):
+    #     http_client = httpclient.AsyncHTTPClient()
+    #     request = tornado.httpclient.HTTPRequest(url=url, connect_timeout=40.0, request_timeout=40.0, allow_nonstandard_methods=True,
+    #                                              headers={'Content-Type': 'application/json'}, **kwargs)
+    #
+    #     res = yield gen.Task(http_client.fetch, request)
+    #     return res
 
     def response(self, data='', status_code=200, msg=''):
         self.finish(json.dumps({

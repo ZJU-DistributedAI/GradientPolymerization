@@ -1,6 +1,6 @@
 import threading
 
-from server.handler.base import BaseHandler
+from .base import BaseHandler
 import json
 import numpy as np
 
@@ -110,24 +110,21 @@ class GradientHandler(BaseHandler):
         self.gradients.append(gradient1)
         self.cyclic_barrier.wait()
 
-        #梯度聚合聚合
-        print("开始梯度聚合")
 
-        # 加载上一轮迭代完的模型
-        primModel = self.listToNumpy(self.load_json("./polymerizeModel/resModel{}.json".format(res_sym)))  # 路径还有问题
+        primModel = self.listToNumpy(self.load_json("./polymerizeModel/resModel{}.json".format(res_sym)))
 
         aveGrad = self.getAveGrad(self.gradients)
         resModel = self.getResModel(primModel, aveGrad)
-        # 每次梯度聚合后更新模型并保存
-        resPath = "./polymerizeModel/resModel" + str(res_sym + 1) + ".json"  # 这里的iteration表示第几次聚合
+
+        resPath = "./polymerizeModel/resModel" + str(res_sym + 1) + ".json"
         self.save_model(resPath, resModel)
 
         data = {}
-        self.response(data=data, status_code=200, msg="聚合成功")
+        self.response(data=data, status_code=200, msg="polymerization success")
 
 
     def post(self):
         container_number = int(self.get_argument("containernumber"))
         self.cyclic_barrier = self.CyclicBarrier(container_number)
-        self.response(data={}, status_code=200, msg="设置容器个数成功")
+        self.response(data={}, status_code=200, msg="set container number success")
 

@@ -1,0 +1,16 @@
+certifi==2017.11.5
+chardet==3.0.4
+peewee==2.10.2
+python-dateutil==2.6.1
+python-mimeparse==1.6.0
+pytz==2017.3
+six==1.11.0
+tornado==4.5.2
+torndb==0.3
+requests==2.18.4
+Pillow==5.0.0
+redis==2.10.6
+python-decouple==3.1
+numpy==1.14.2
+
+

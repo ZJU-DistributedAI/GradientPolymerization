@@ -1,10 +1,10 @@
 
-import server.server_urls
-
+# from .server_urls import *
+import server_urls
 server_urls = {
 
 
-    "server_pattern": server.server_urls.urlpatterns
+    "server_pattern": server_urls.urlpatterns
 
 }
 
