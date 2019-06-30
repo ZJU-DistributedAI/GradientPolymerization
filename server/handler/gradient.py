@@ -111,15 +111,11 @@ class GradientHandler(BaseHandler):
 
         #梯度聚合聚合
         print("开始梯度聚合")
-        # 获取梯度
-        for i in range(self.container_number):
-            grad = self.listToNumpy(self.load_json("./result/grad" + str(i) + ".json"))
-            grads.append(grad)
 
         # 加载上一轮迭代完的模型
         primModel = self.listToNumpy(self.load_json("./polymerizeModel/resModel{}.json".format(iteration)))  # 路径还有问题
 
-        aveGrad = self.getAveGrad(grads)
+        aveGrad = self.getAveGrad(self.gradients)
         resModel = self.getResModel(primModel, aveGrad)
         # 每次梯度聚合后更新模型并保存
         resPath = "./polymerizeModel/resModel" + str(iteration + 1) + ".json"  # 这里的iteration表示第几次聚合

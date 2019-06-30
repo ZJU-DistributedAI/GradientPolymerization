@@ -4,8 +4,7 @@ import json
 from .neural_network import *
 from .simple_layer import *
 import numpy as np
-import time
-
+import requests
 
 def imageToVector(image):
     return np.reshape(image, [1, 784])
@@ -87,14 +86,12 @@ if __name__ == '__main__':
 
     test_images = np.load('./data/testImages.npy')
     test_labels = np.load('./data/testLabels.npy')
-    start = time.time()
+
     for i in range(settings['num_of_images']):
         image = imageToVector(train_images[i])
         image = normalize_data(image)
         activation = perform_simple_training(model, image, labelToVector(train_labels[i]), settings)
-    end = time.time()
 
-    save_txt("./time/Thread{}.txt".format(threadID),str(end - start))
 
     grad = {'num': settings['num_of_images'],
             'W1': (primModel['W1'] - model[0].w).tolist(),
@@ -104,19 +101,10 @@ if __name__ == '__main__':
             'W3': (primModel['W3'] - model[4].w).tolist(),
             'b3': (primModel['b3'] - model[4].b).tolist()}
 
-    gradPath = "./result/grad" + threadID + ".json"
-    save_json(gradPath, grad)
 
-    modelParameter = {
-            'W1': model[0].w.tolist(),
-            'b1': model[0].b.tolist(),
-            'W2': model[2].w.tolist(),
-            'b2': model[2].b.tolist(),
-            'W3': model[4].w.tolist(),
-            'b3': model[4].b.tolist()}
-    modelPath = "./singleTrainModel/model{}.json".format(threadID)
-    save_json(modelPath,modelParameter)
-
-    # test_accuracy_value = calculate_accuracy(model, test_images, test_labels)
-    # print(argv[1] + " accuracy: " + str(test_accuracy_value))
-    # save_txt("./accuracy/singleAccuracy" + threadID + ".txt", str(test_accuracy_value))
+    #发送梯度到聚合方
+    url = 'http://official-account/app/messages/group'
+    headers = {"Content-Type": "application/json;charset=uf8"}
+    body = {"type": "text", "content": grad,"iteration":iteration}
+    response = requests.post(url, data=json.dumps(body), headers=headers)
+    print(response.text)

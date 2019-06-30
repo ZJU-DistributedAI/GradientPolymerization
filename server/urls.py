@@ -1,10 +1,10 @@
 
-import server_urls
+import server.server_urls
 
 server_urls = {
 
 
-    "server": server_urls
+    "server": server.server_urls
 
 }
 
