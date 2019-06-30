@@ -1,3 +1,5 @@
+import json
+
 import tornado
 from tornado import gen, httpclient
 
@@ -20,4 +22,10 @@ class BaseHandler(tornado.web.RequestHandler):
         self.write_async_log(res)
         return res
 
+    def response(self, data='', status_code=200, msg=''):
+        self.finish(json.dumps({
+            'code': status_code,
+            'msg': msg,
+            'data': data
+        }))
 

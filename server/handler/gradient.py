@@ -21,9 +21,10 @@ class GradientHandler(BaseHandler):
             finally:
                 self.condition.release()
 
-    cyclic_barrier = CyclicBarrier(2)
+    cyclic_barrier = CyclicBarrier(0)
 
     gradients = []
+    container_number = 0
 
     def put(self):
         gradient = self.get_argument("gradient")
@@ -34,3 +35,11 @@ class GradientHandler(BaseHandler):
         #梯度聚合聚合
         print("开始梯度聚合")
 
+        data = {}
+        self.response(data=data, status_code=200, msg="聚合成功")
+
+
+    def post(self):
+        container_number = int(self.get_argument("containernumber"))
+        self.cyclic_barrier = self.CyclicBarrier(10)
+        self.response(data={}, status_code=200, msg="设置容器个数成功")
