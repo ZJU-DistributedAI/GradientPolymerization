@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98d9b6bc-c2d0-4984-a45f-749521b9c549" name="Default Changelist" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/server/handler/data/testImages.npy" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/server/handler/data/testLabels.npy" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/server/handler/gradientPolymerization.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/server/handler/neural_network.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/server/handler/simple_layer.py" />
-      <change beforePath="$PROJECT_DIR$/server/application.py" afterPath="$PROJECT_DIR$/server/application.py" />
-      <change beforePath="$PROJECT_DIR$/server/handler/gradient.py" afterPath="$PROJECT_DIR$/server/handler/gradient.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/server/Dockerfile" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,14 +37,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gradient.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gradient.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/handler/gradient.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-161">
-              <caret line="116" column="17" lean-forward="false" selection-start-line="116" selection-start-column="12" selection-end-line="116" selection-end-column="17" />
+            <state relative-caret-position="203">
+              <caret line="102" column="42" lean-forward="false" selection-start-line="102" selection-start-column="42" selection-end-line="102" selection-end-column="42" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="77">
+              <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,6 +103,7 @@
         <option value="$PROJECT_DIR$/server/handler/base.py" />
         <option value="$PROJECT_DIR$/server/urls.py" />
         <option value="$PROJECT_DIR$/server/handler/gradient.py" />
+        <option value="$PROJECT_DIR$/server/Dockerfile" />
       </list>
     </option>
   </component>
@@ -140,12 +145,6 @@
               <item name="GradientPolymerization" type="b2602c69:ProjectViewProjectNode" />
               <item name="GradientPolymerization" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GradientPolymerization" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GradientPolymerization" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="handler" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -337,11 +336,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/handler/gradient.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-161">
-          <caret line="116" column="17" lean-forward="false" selection-start-line="116" selection-start-column="12" selection-end-line="116" selection-end-column="17" />
+        <state relative-caret-position="203">
+          <caret line="102" column="42" lean-forward="false" selection-start-line="102" selection-start-column="42" selection-end-line="102" selection-end-column="42" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="7" column="17" lean-forward="true" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
