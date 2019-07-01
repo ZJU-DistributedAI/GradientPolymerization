@@ -3,6 +3,7 @@ from sys import argv
 import json
 from .neural_network import *
 from .simple_layer import *
+from tornado import options
 import numpy as np
 import requests
 
@@ -101,10 +102,8 @@ if __name__ == '__main__':
             'W3': (primModel['W3'] - model[4].w).tolist(),
             'b3': (primModel['b3'] - model[4].b).tolist()}
 
-
-
-    url = 'http://official-account/app/messages/group'
-    headers = {"Content-Type": "application/json;charset=uf8"}
+    url = options.options.polymerization_container
+    headers = {"Content-Type": "application/json;charset=utf8"}
     body = {"type": "text", "content": grad,"iteration":iteration}
     response = requests.post(url, data=json.dumps(body), headers=headers)
     print(response.text)
