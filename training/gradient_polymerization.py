@@ -102,7 +102,7 @@ if __name__ == '__main__':
             'W3': (primModel['W3'] - model[4].w).tolist(),
             'b3': (primModel['b3'] - model[4].b).tolist()}
 
-    url = options.options.polymerization_container
+    url = "http://172.17.0.2:8888"
     headers = {"Content-Type": "application/json;charset=utf8"}
     body = {"type": "text", "content": grad,"iteration":iteration}
     response = requests.post(url, data=json.dumps(body), headers=headers)
