@@ -7,10 +7,9 @@ import numpy as np
 
 class GradientHandler(BaseHandler):
     class CyclicBarrier():
-        def __init__(self,count):
+        def __init__(self, count):
             self.condition = threading.Condition()
             self.count = count
-
 
         def wait(self):
             try:
@@ -110,7 +109,6 @@ class GradientHandler(BaseHandler):
         self.gradients.append(gradient1)
         self.cyclic_barrier.wait()
 
-
         primModel = self.listToNumpy(self.load_json("./polymerizeModel/resModel{}.json".format(res_sym)))
 
         aveGrad = self.getAveGrad(self.gradients)
@@ -122,9 +120,7 @@ class GradientHandler(BaseHandler):
         data = {}
         self.response(data=data, status_code=200, msg="polymerization success")
 
-
     def post(self):
         container_number = int(self.get_argument("containernumber"))
         self.cyclic_barrier = self.CyclicBarrier(container_number)
         self.response(data={}, status_code=200, msg="set container number success")
-
